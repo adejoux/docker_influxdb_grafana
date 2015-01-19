@@ -16,9 +16,9 @@ RUN chown nginx: /www
 WORKDIR /www
 
 #download grafana in /www
-RUN wget http://grafanarel.s3.amazonaws.com/grafana-1.8.1.tar.gz
-RUN tar -xvzf grafana-1.8.1.tar.gz
-RUN ln -s grafana-1.8.1 grafana
+RUN wget http://grafanarel.s3.amazonaws.com/grafana-1.9.1.tar.gz
+RUN tar -xvzf grafana-1.9.1.tar.gz
+RUN ln -s grafana-1.9.1 grafana
 
 #configure nginx : web root dir: /www and no daemon mode
 RUN perl -pi -e 's#root\s+/usr/share/nginx/html#root /www#' /etc/nginx/nginx.conf
