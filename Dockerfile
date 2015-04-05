@@ -7,8 +7,8 @@ RUN yum update -y
 # install latest version of influxdb
 RUN yum install -y http://s3.amazonaws.com/influxdb/influxdb-latest-1.x86_64.rpm
 
-#install wget and nginx
-RUN yum install -y nginx wget
+#install tar, wget and nginx
+RUN yum install -y nginx wget tar
 
 #create web directory
 RUN mkdir /www
