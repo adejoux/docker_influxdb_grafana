@@ -10,22 +10,17 @@ RUN yum install -y http://s3.amazonaws.com/influxdb/influxdb-latest-1.x86_64.rpm
 #install tar, wget and nginx
 RUN yum install -y nginx wget tar
 
-#create web directory
-RUN mkdir /www
-RUN chown nginx: /www
-WORKDIR /www
+#Add nginx configuration file
+ADD nginx.conf /etc/nginx/nginx.conf
 
-#download grafana in /www
-RUN wget http://grafanarel.s3.amazonaws.com/grafana-1.9.1.tar.gz
-RUN tar -xvzf grafana-1.9.1.tar.gz
-RUN ln -s grafana-1.9.1 grafana
+# Add grafana  repository
+ADD grafana.repo /etc/yum.repos.d/grafana.repo
 
-#configure nginx : web root dir: /www and no daemon mode
-RUN perl -pi -e 's#root\s+/usr/share/nginx/html#root /www#' /etc/nginx/nginx.conf
-RUN  echo "daemon off;" >> /etc/nginx/nginx.conf
+#install grafana 
+RUN yum install -y grafana
 
-# Add grafana configuration file
-ADD config.js /www/grafana/config.js
+#change root_url 
+RUN perl -pi -e 's#;root_url = %\(protocol\)s://%\(domain\)s:%\(http_port\)s/#root_url = %(protocol)s://%(domain)s:%(http_port)s/grafana#' /etc/grafana/grafana.ini
 
 # upload and configure for execution start.sh script
 ADD start.sh /start.sh
