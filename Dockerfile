@@ -5,7 +5,7 @@ MAINTAINER Alain Dejoux <adejoux@krystalia.net>
 RUN yum update -y
 
 # install latest version of influxdb
-RUN yum install -y http://s3.amazonaws.com/influxdb/influxdb-latest-1.x86_64.rpm
+RUN yum install -y http://get.influxdb.org/influxdb-0.9.0_rc27-1.x86_64.rpm
 
 #install tar, wget and nginx
 RUN yum install -y nginx wget tar
