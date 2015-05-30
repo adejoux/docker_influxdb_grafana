@@ -4,8 +4,6 @@ MAINTAINER Alain Dejoux <adejoux@krystalia.net>
 # update packages
 RUN yum update -y
 
-# install latest version of influxdb
-RUN yum install -y http://get.influxdb.org/influxdb-0.9.0_rc27-1.x86_64.rpm
 
 #install tar, wget and nginx
 RUN yum install -y nginx wget tar
@@ -18,6 +16,12 @@ ADD grafana.repo /etc/yum.repos.d/grafana.repo
 
 #install grafana 
 RUN yum install -y grafana
+
+# install latest version of influxdb
+RUN yum install -y http://get.influxdb.org/influxdb-0.9.0_rc31-1.x86_64.rpm
+
+# install latest grafana
+RUN yum install -y https://grafanarel.s3.amazonaws.com/builds/grafana-2.1.0-pre1.x86_64.rpm
 
 #change root_url 
 RUN perl -pi -e 's#;root_url = %\(protocol\)s://%\(domain\)s:%\(http_port\)s/#root_url = %(protocol)s://%(domain)s:%(http_port)s/grafana#' /etc/grafana/grafana.ini
