@@ -1,7 +1,7 @@
 InfluxDB + Grafana
 ============
 
-It's a repository containing the DockerFile of InfluxDB/Grafana with NGINX as web server.
+It's a repository containing the DockerFile of a InfluxDB 0.8 and Grafana 2 installation.
 
 Docker Base image
 =================
@@ -17,14 +17,14 @@ Install [Docker](https://www.docker.com/) first.
 Download the image :
 
 ~~~
-docker pull adejoux/influxdb_grafana
+docker pull adejoux/docker_influxdb_grafana
 ~~~
 
 Usage
 =====
 
 ~~~
-docker run -d -p 80:80 -p 8083:8083 -p 8086:8086 -t adejoux/influxdb_grafana
+docker run -d -p 3000:3000 -p 8083:8083 -p 8086:8086 -t adejoux/docker_influxdb_grafana
 ~~~
 
-After few seconds, InfluxDB will be accessible on http://localhost:8083 and Grafana at http://localhost/grafana
+After few seconds, InfluxDB will be accessible on http://localhost:8083 and Grafana at http://localhost:3000
