@@ -16,5 +16,8 @@ RUN yum install -y https://grafanarel.s3.amazonaws.com/builds/grafana-2.1.0-1.x8
 RUN yum clean all
 # upload and configure for execution start.sh script
 ADD start.sh /start.sh
+EXPOSE 3000
+EXPOSE 8086
+EXPOSE 8083
 RUN chmod +x /start.sh
 CMD ["/start.sh"]
