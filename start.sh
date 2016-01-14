@@ -4,5 +4,5 @@
 /etc/init.d/grafana-server start
 
 # run InfluxDB
-/opt/influxdb/influxd 
+/usr/bin/influxd 
 
