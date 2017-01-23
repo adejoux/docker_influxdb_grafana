@@ -1,7 +1,7 @@
 InfluxDB + Grafana
 ============
 
-It's a repository containing the DockerFile of a InfluxDB 0.13 and Grafana 3.1.0 installation.
+It's a repository containing the DockerFile of a InfluxDB 1.1.1 and Grafana 4.1.1 installation.
 
 Docker Base image
 =================
